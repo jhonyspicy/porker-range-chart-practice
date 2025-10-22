@@ -16,12 +16,10 @@ export function RangeChart({ onCellClick, disabled = false, correctCellKey = nul
       {grid.map((row, rowIndex) => (
         <div key={rowIndex} className="range-row">
           {row.map((cell, colIndex) => {
-            const isCorrect = correctCellKey === cell.display;
             const cellClassName = [
               'range-cell',
               isDiagonal(rowIndex, colIndex) ? 'diagonal' : '',
               isRow8OrCol8(rowIndex, colIndex) ? 'row8-col8' : '',
-              isCorrect ? 'correct-answer' : '', // デバッグ用
             ]
               .filter(Boolean)
               .join(' ');
