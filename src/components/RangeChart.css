@@ -1,0 +1,83 @@
+.range-chart {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 20px;
+  background: #f8f9fa;
+  border-radius: 8px;
+}
+
+.range-row {
+  display: flex;
+  gap: 2px;
+}
+
+.range-cell {
+  width: 50px;
+  height: 50px;
+  border: 1px solid #adb5bd;
+  background: white;
+  font-size: 14px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+}
+
+.range-cell:hover:not(:disabled) {
+  background: #e9ecef;
+  transform: scale(1.05);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+}
+
+.range-cell:active:not(:disabled) {
+  transform: scale(0.95);
+}
+
+.range-cell:disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+/* 対角線（AA～22）の背景色 */
+.range-cell.diagonal {
+  background: #a9a9a9;
+}
+
+.range-cell.diagonal:hover:not(:disabled) {
+  background: #909090;
+}
+
+/* 8行目と8列目の背景色 */
+.range-cell.row8-col8 {
+  background: #dcdcdc;
+}
+
+.range-cell.row8-col8:hover:not(:disabled) {
+  background: #c0c0c0;
+}
+
+/* 対角線かつ8行/列の場合は対角線を優先 */
+.range-cell.diagonal.row8-col8 {
+  background: #a9a9a9;
+}
+
+.range-cell.diagonal.row8-col8:hover:not(:disabled) {
+  background: #909090;
+}
+
+/* デバッグ用: 正解のセルを強調表示 */
+.range-cell.correct-answer {
+  background: #2ecc71 !important;
+  color: white !important;
+  font-weight: bold;
+  box-shadow: 0 0 10px rgba(46, 204, 113, 0.8);
+}
+
+.range-cell.correct-answer:hover:not(:disabled) {
+  background: #27ae60 !important;
+}

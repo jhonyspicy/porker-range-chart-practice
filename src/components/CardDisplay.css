@@ -1,0 +1,50 @@
+.card-display {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  padding: 20px;
+}
+
+.playing-card {
+  width: 120px;
+  height: 180px;
+  background: white;
+  border: 2px solid #333;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: 48px;
+  font-weight: bold;
+  box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.playing-card.red {
+  color: #e74c3c;
+}
+
+.playing-card.black {
+  color: #2c3e50;
+}
+
+.card-rank {
+  font-size: 56px;
+  line-height: 1;
+}
+
+.card-suit {
+  font-size: 64px;
+  line-height: 1;
+  margin-top: 8px;
+}
+
+.card-placeholder {
+  width: 120px;
+  height: 180px;
+  background: #ecf0f1;
+  border: 2px dashed #95a5a6;
+  border-radius: 8px;
+}
