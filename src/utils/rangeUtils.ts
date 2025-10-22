@@ -7,8 +7,10 @@ const RANKS: Rank[] = ['A', 'K', 'Q', 'J', 'T', '9', '8', '7', '6', '5', '4', '3
  * 行: A → 2（縦軸）
  * 列: A → 2（横軸）
  * 対角線: ペア（AA, KK, ...）
- * 右上: suited（AKs, AQs, ...）
- * 左下: offsuit（AKo, AQo, ...）
+ * 右上: suited（AKs, AQs, ...）- 列が行より大きい
+ * 左下: offsuit（AKo, AQo, ...）- 行が列より大きい
+ *
+ * 表記ルール: 常に列のランクを先に、行のランクを後に書く
  */
 export function generateRangeGrid(): RangeCell[][] {
   const grid: RangeCell[][] = [];
@@ -27,18 +29,19 @@ export function generateRangeGrid(): RangeCell[][] {
           ranks: [rowRank, colRank],
         });
       } else if (col > row) {
-        // 右上: suited
+        // 右上: suited（列の方が強い）
         rowData.push({
           display: `${colRank}${rowRank}s`,
           suited: true,
           ranks: [colRank, rowRank],
         });
       } else {
-        // 左下: offsuit
+        // 左下: offsuit（行の方が強い）
+        // 常に列を先に、行を後に書く
         rowData.push({
-          display: `${rowRank}${colRank}o`,
+          display: `${colRank}${rowRank}o`,
           suited: false,
-          ranks: [rowRank, colRank],
+          ranks: [colRank, rowRank],
         });
       }
     }

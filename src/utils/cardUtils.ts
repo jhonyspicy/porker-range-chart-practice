@@ -61,15 +61,24 @@ export function getRankIndex(rank: Rank): number {
 /**
  * 2枚のカードから正解セルを特定
  * @returns セルの表示文字列（例: "AKs", "AKo", "AA"）
+ *
+ * レンジ表のルール:
+ * - ペア: そのまま（AA, KK, ...）
+ * - 非ペア: 強いランク（インデックスが小さい）を先に、弱いランクを後に
+ *   例: A♠ 2♥ → A2o (Aのインデックス=0, 2のインデックス=12)
+ *   例: 4♠ 2♠ → 42s (4のインデックス=10, 2のインデックス=12)
  */
 export function getCorrectCellKey(card1: Card, card2: Card): string {
   if (isPair(card1, card2)) {
     return `${card1.rank}${card2.rank}`;
   }
 
-  // ランクが異なる場合、順序を正規化（大きい方を先に）
+  // ランクが異なる場合、順序を正規化（強い方＝インデックスが小さい方を先に）
+  const index1 = getRankIndex(card1.rank);
+  const index2 = getRankIndex(card2.rank);
+
   const [higherRank, lowerRank] =
-    getRankIndex(card1.rank) < getRankIndex(card2.rank)
+    index1 < index2
       ? [card1.rank, card2.rank]
       : [card2.rank, card1.rank];
 
