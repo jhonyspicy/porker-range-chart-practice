@@ -7,10 +7,10 @@ const RANKS: Rank[] = ['A', 'K', 'Q', 'J', 'T', '9', '8', '7', '6', '5', '4', '3
  * 行: A → 2（縦軸）
  * 列: A → 2（横軸）
  * 対角線: ペア（AA, KK, ...）
- * 右上: suited（AKs, AQs, ...）- 列が行より大きい
- * 左下: offsuit（AKo, AQo, ...）- 行が列より大きい
+ * 右上: suited（AKs, AQs, ...）
+ * 左下: offsuit（AKo, AQo, ...）
  *
- * 表記ルール: 常に列のランクを先に、行のランクを後に書く
+ * 表記ルール: 常に強いランク（大きい値）を先に、弱いランクを後に
  */
 export function generateRangeGrid(): RangeCell[][] {
   const grid: RangeCell[][] = [];
@@ -30,6 +30,7 @@ export function generateRangeGrid(): RangeCell[][] {
         });
       } else if (col > row) {
         // 右上: suited（列の方が強い）
+        // 表記: 強い方（列）+ 弱い方（行）
         rowData.push({
           display: `${colRank}${rowRank}s`,
           suited: true,
@@ -37,11 +38,11 @@ export function generateRangeGrid(): RangeCell[][] {
         });
       } else {
         // 左下: offsuit（行の方が強い）
-        // 常に列を先に、行を後に書く
+        // 表記: 強い方（行）+ 弱い方（列）
         rowData.push({
-          display: `${colRank}${rowRank}o`,
+          display: `${rowRank}${colRank}o`,
           suited: false,
-          ranks: [colRank, rowRank],
+          ranks: [rowRank, colRank],
         });
       }
     }

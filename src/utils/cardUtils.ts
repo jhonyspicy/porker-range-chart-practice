@@ -65,22 +65,23 @@ export function getRankIndex(rank: Rank): number {
  * レンジ表のルール:
  * - ペア: そのまま（AA, KK, ...）
  * - 非ペア: 強いランク（インデックスが小さい）を先に、弱いランクを後に
- *   例: A♠ 2♥ → A2o (Aのインデックス=0, 2のインデックス=12)
- *   例: 4♠ 2♠ → 42s (4のインデックス=10, 2のインデックス=12)
+ *   RANKS配列: ['A', 'K', 'Q', 'J', 'T', '9', '8', '7', '6', '5', '4', '3', '2']
+ *   例: 4♠ 2♠ → 42s (4のインデックス=10 < 2のインデックス=12 なので4が強い)
  */
 export function getCorrectCellKey(card1: Card, card2: Card): string {
   if (isPair(card1, card2)) {
     return `${card1.rank}${card2.rank}`;
   }
 
-  // ランクが異なる場合、順序を正規化（強い方＝インデックスが小さい方を先に）
+  // ランクが異なる場合、順序を正規化
+  // インデックスが小さい方が強いランク
   const index1 = getRankIndex(card1.rank);
   const index2 = getRankIndex(card2.rank);
 
   const [higherRank, lowerRank] =
     index1 < index2
-      ? [card1.rank, card2.rank]
-      : [card2.rank, card1.rank];
+      ? [card1.rank, card2.rank]  // card1の方が強い
+      : [card2.rank, card1.rank];  // card2の方が強い
 
   const suited = isSuited(card1, card2);
   return `${higherRank}${lowerRank}${suited ? 's' : 'o'}`;
