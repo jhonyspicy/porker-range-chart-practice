@@ -42,22 +42,23 @@ body {
 
 /* 左エリア: カード表示 */
 .card-area {
-  flex: 1;
+  flex: 0 0 auto;
+  width: 300px;
   display: flex;
   align-items: center;
   justify-content: center;
   background: #2c3e50;
-  padding: 20px;
+  padding: 10px;
 }
 
 /* 右エリア: レンジ表 */
 .chart-area {
-  flex: 1.5;
+  flex: 1;
   display: flex;
   align-items: center;
   justify-content: center;
   background: #34495e;
-  padding: 20px;
+  padding: 10px;
   overflow: auto;
 }
 

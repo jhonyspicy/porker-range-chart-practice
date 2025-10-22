@@ -1,23 +1,30 @@
 .range-chart {
   display: flex;
   flex-direction: column;
-  gap: 2px;
-  padding: 20px;
+  gap: 3px;
+  padding: 5px;
   background: #f8f9fa;
   border-radius: 8px;
+  width: 100%;
+  height: 100%;
+  max-width: min(90vw, 90vh);
+  max-height: min(90vw, 90vh);
 }
 
 .range-row {
   display: flex;
-  gap: 2px;
+  gap: 3px;
+  flex: 1;
 }
 
 .range-cell {
-  width: 50px;
-  height: 50px;
+  flex: 1;
+  min-width: 0;
+  min-height: 0;
+  aspect-ratio: 1;
   border: 1px solid #adb5bd;
   background: white;
-  font-size: 14px;
+  font-size: clamp(12px, 2vw, 20px);
   font-weight: bold;
   cursor: pointer;
   transition: all 0.2s;
