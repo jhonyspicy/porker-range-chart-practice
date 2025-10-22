@@ -32,17 +32,17 @@ export function generateRangeGrid(): RangeCell[][] {
         // 右上: suited（列の方が強い）
         // 表記: 強い方（列）+ 弱い方（行）
         rowData.push({
-          display: `${colRank}${rowRank}s`,
+          display: `${rowRank}${colRank}s`,
           suited: true,
-          ranks: [colRank, rowRank],
+          ranks: [rowRank, colRank],
         });
       } else {
         // 左下: offsuit（行の方が強い）
         // 表記: 強い方（行）+ 弱い方（列）
         rowData.push({
-          display: `${rowRank}${colRank}o`,
+          display: `${colRank}${rowRank}o`,
           suited: false,
-          ranks: [rowRank, colRank],
+          ranks: [colRank, rowRank],
         });
       }
     }
