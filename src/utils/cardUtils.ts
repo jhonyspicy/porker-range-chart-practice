@@ -30,11 +30,58 @@ function shuffle<T>(array: T[]): T[] {
 
 /**
  * デッキから2枚のカードをランダムに抽選（同じカードは出ない）
+ * 出題頻度: スーツ 45%, オフスーツ 45%, ポケット 10%
  */
 export function drawTwoCards(): [Card, Card] {
-  const deck = createDeck();
-  const shuffled = shuffle(deck);
-  return [shuffled[0], shuffled[1]];
+  const rand = Math.random();
+
+  // 確率に基づいてハンドタイプを決定
+  if (rand < 0.45) {
+    // スーツ（45%）
+    return drawSuitedCards();
+  } else if (rand < 0.9) {
+    // オフスーツ（45%）
+    return drawOffsuitCards();
+  } else {
+    // ポケット（10%）
+    return drawPocketPair();
+  }
+}
+
+/**
+ * スーツのハンドを生成（同じスート、異なるランク）
+ */
+function drawSuitedCards(): [Card, Card] {
+  const suit = SUITS[Math.floor(Math.random() * SUITS.length)];
+  const shuffledRanks = shuffle([...RANKS]);
+  return [
+    { suit, rank: shuffledRanks[0] },
+    { suit, rank: shuffledRanks[1] }
+  ];
+}
+
+/**
+ * オフスーツのハンドを生成（異なるスート、異なるランク）
+ */
+function drawOffsuitCards(): [Card, Card] {
+  const shuffledRanks = shuffle([...RANKS]);
+  const shuffledSuits = shuffle([...SUITS]);
+  return [
+    { suit: shuffledSuits[0], rank: shuffledRanks[0] },
+    { suit: shuffledSuits[1], rank: shuffledRanks[1] }
+  ];
+}
+
+/**
+ * ポケットペアを生成（同じランク、異なるスート）
+ */
+function drawPocketPair(): [Card, Card] {
+  const rank = RANKS[Math.floor(Math.random() * RANKS.length)];
+  const shuffledSuits = shuffle([...SUITS]);
+  return [
+    { suit: shuffledSuits[0], rank },
+    { suit: shuffledSuits[1], rank }
+  ];
 }
 
 /**
