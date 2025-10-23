@@ -63,7 +63,7 @@ body {
   overflow: auto;
 }
 
-/* 縦画面レイアウト */
+/* 縦画面レイアウト - カードエリアとレンジ表エリアを半々に */
 @media (orientation: portrait) {
   .main-content {
     flex-direction: column;
@@ -71,8 +71,7 @@ body {
 
   .card-area {
     width: 100%;
-    height: 200px;
-    flex: 0 0 auto;
+    flex: 1;
     padding: 5px;
   }
 
