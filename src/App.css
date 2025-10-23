@@ -24,6 +24,7 @@ body {
   height: 100dvh; /* dynamic viewport height でアドレスバーを考慮 */
   background: #34495e;
   overflow: hidden;
+  padding-bottom: env(safe-area-inset-bottom, 20px); /* ホームボタンエリアの余白 */
 }
 
 /* 上部: プログレスバーエリア */
