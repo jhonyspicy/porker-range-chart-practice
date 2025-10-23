@@ -88,3 +88,22 @@
 .range-cell.correct-answer:hover:not(:disabled) {
   background: #27ae60 !important;
 }
+
+/* モバイル対応 */
+@media (orientation: portrait) {
+  .range-chart {
+    gap: 2px;
+    padding: 3px;
+    max-width: 100%;
+    max-height: 100%;
+  }
+
+  .range-row {
+    gap: 2px;
+  }
+
+  .range-cell {
+    font-size: clamp(10px, 2.5vw, 16px);
+    border: 0.5px solid #adb5bd;
+  }
+}

@@ -135,12 +135,12 @@ function App() {
 
   return (
     <div className="app">
-      {/* 左端: プログレスバー */}
+      {/* 上部: プログレスバー */}
       <div className="progress-area">
         <ProgressBar percentage={progressPercentage} />
       </div>
 
-      {/* 中央: メインコンテンツ */}
+      {/* メインコンテンツ */}
       <div className="main-content">
         {/* 左エリア: カード表示 */}
         <div className="card-area">

@@ -48,3 +48,30 @@
   border: 2px dashed #95a5a6;
   border-radius: 8px;
 }
+
+/* モバイル対応 */
+@media (orientation: portrait) {
+  .card-display {
+    gap: 8px;
+    padding: 2px;
+  }
+
+  .playing-card {
+    width: 80px;
+    height: 120px;
+  }
+
+  .card-rank {
+    font-size: 36px;
+  }
+
+  .card-suit {
+    font-size: 42px;
+    margin-top: 4px;
+  }
+
+  .card-placeholder {
+    width: 80px;
+    height: 120px;
+  }
+}
