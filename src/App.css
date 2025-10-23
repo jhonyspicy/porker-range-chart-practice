@@ -38,6 +38,21 @@ body {
   padding: 5px 20px;
 }
 
+/* スコア表示 */
+.score-display {
+  position: absolute;
+  left: 10px;
+  top: 40px;
+  color: #ecf0f1;
+  font-size: 20px;
+  font-weight: bold;
+  z-index: 100;
+  background: rgba(44, 62, 80, 0.9);
+  padding: 8px 16px;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
 /* メインコンテンツ */
 .main-content {
   flex: 1;

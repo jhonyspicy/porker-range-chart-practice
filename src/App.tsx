@@ -142,6 +142,9 @@ function App() {
 
       {/* メインコンテンツ */}
       <div className="main-content">
+        {gameState === 'playing' && (
+          <div className="score-display">スコア: {score}</div>
+        )}
         {/* 左エリア: カード表示 */}
         <div className="card-area">
           <CardDisplay cards={currentCards} />
