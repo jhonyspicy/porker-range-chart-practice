@@ -1,6 +1,9 @@
 # Poker Range Chart Practice
 スマホを横向きにしたブラウザのみを対象とした、プリフロップレンジ暗記用のリアクションゲーム。
 
+## 公開URL
+https://jhonyspicy.github.io/porker-range-chart-practice/
+
 ## 技術スタック
 - **React 18.3.1** + **TypeScript 5.6.2**
 - **Vite 6.0.5** (開発サーバー・ビルドツール)
