@@ -5,10 +5,9 @@ import './RangeChart.css';
 interface RangeChartProps {
   onCellClick: (cellKey: string) => void;
   disabled?: boolean;
-  correctCellKey?: string | null; // デバッグ用: 正解のセルキー
 }
 
-export function RangeChart({ onCellClick, disabled = false, correctCellKey = null }: RangeChartProps) {
+export function RangeChart({ onCellClick, disabled = false }: RangeChartProps) {
   const grid = useMemo(() => generateRangeGrid(), []);
 
   return (

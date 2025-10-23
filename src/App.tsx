@@ -133,11 +133,6 @@ function App() {
   const progressPercentage =
     gameState === 'playing' ? (timeRemaining / timeLimit) * 100 : 100;
 
-  // デバッグ用: 正解のセルキーを計算
-  const correctCellKey = currentCards
-    ? getCorrectCellKey(currentCards[0], currentCards[1])
-    : null;
-
   return (
     <div className="app">
       {/* 左端: プログレスバー */}
@@ -157,7 +152,6 @@ function App() {
           <RangeChart
             onCellClick={handleCellClick}
             disabled={gameState !== 'playing'}
-            correctCellKey={correctCellKey}
           />
         </div>
       </div>
