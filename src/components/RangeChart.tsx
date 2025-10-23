@@ -5,9 +5,10 @@ import './RangeChart.css';
 interface RangeChartProps {
   onCellClick: (cellKey: string) => void;
   disabled?: boolean;
+  showCardLabels?: boolean;
 }
 
-export function RangeChart({ onCellClick, disabled = false }: RangeChartProps) {
+export function RangeChart({ onCellClick, disabled = false, showCardLabels = true }: RangeChartProps) {
   const grid = useMemo(() => generateRangeGrid(), []);
 
   return (
@@ -30,7 +31,7 @@ export function RangeChart({ onCellClick, disabled = false }: RangeChartProps) {
                 onClick={() => !disabled && onCellClick(cell.display)}
                 disabled={disabled}
               >
-                {cell.display}
+                {showCardLabels ? cell.display : ''}
               </button>
             );
           })}

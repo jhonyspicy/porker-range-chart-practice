@@ -24,6 +24,7 @@ function App() {
   const [timeRemaining, setTimeRemaining] = useState<number>(
     GAME_CONFIG.INITIAL_TIME_LIMIT
   );
+  const [showCardLabels, setShowCardLabels] = useState<boolean>(true);
 
   const timerRef = useRef<number | null>(null);
   const countdownTimerRef = useRef<number | null>(null);
@@ -143,7 +144,21 @@ function App() {
       {/* メインコンテンツ */}
       <div className="main-content">
         {gameState === 'playing' && (
-          <div className="score-display">スコア: {score}</div>
+          <>
+            <div className="score-display">スコア: {score}</div>
+            <div className="toggle-container">
+              <label className="toggle-label">
+                <input
+                  type="checkbox"
+                  checked={showCardLabels}
+                  onChange={(e) => setShowCardLabels(e.target.checked)}
+                  className="toggle-checkbox"
+                />
+                <span className="toggle-slider"></span>
+              </label>
+              <span className="toggle-text">カード表示</span>
+            </div>
+          </>
         )}
         {/* 左エリア: カード表示 */}
         <div className="card-area">
@@ -155,6 +170,7 @@ function App() {
           <RangeChart
             onCellClick={handleCellClick}
             disabled={gameState !== 'playing'}
+            showCardLabels={showCardLabels}
           />
         </div>
       </div>
