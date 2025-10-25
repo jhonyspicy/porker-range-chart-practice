@@ -86,3 +86,23 @@
   color: #e74c3c;
   margin-bottom: 40px;
 }
+
+.final-score {
+  margin: 30px 0;
+  padding: 20px;
+  background: #f8f9fa;
+  border-radius: 8px;
+}
+
+.score-label {
+  font-size: 18px;
+  color: #7f8c8d;
+  margin-bottom: 10px;
+}
+
+.score-value {
+  font-size: 72px;
+  font-weight: bold;
+  color: #e74c3c;
+  line-height: 1;
+}

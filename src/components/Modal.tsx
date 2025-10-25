@@ -52,10 +52,13 @@ interface GameOverModalProps {
 export function GameOverModal({ score, onRestart }: GameOverModalProps) {
   return (
     <div className="modal-inner">
-      <h2>Game Over</h2>
-      <p className="score-display">正解数: {score}</p>
+      <h2>GAME OVER</h2>
+      <div className="final-score">
+        <div className="score-label">スコア</div>
+        <div className="score-value">{score}</div>
+      </div>
       <button className="modal-button" onClick={onRestart}>
-        スタート
+        もう一度
       </button>
     </div>
   );
